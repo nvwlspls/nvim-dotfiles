@@ -5,7 +5,7 @@
 --x 4. use mouse
 --x 5. color scheme
 --x 6. better syntax highliting (treesitter)
--- 7. lsp
+--x 7. lsp
 -- 8. copilot
 -- 9. better indenting
 -- 10. git integration(?)
@@ -21,6 +21,7 @@
 -- 20. split one line into multi lines
 -- 21. auto number lists
 -- 22. search for symbol 
+-- 23. switch buffers (harpoon+)
 require "paq" {
 	"savq/paq-nvim", -- Let Paq manage itself
 	"nvim-lua/plenary.nvim",
@@ -40,7 +41,7 @@ require "paq" {
 vim.cmd [[set mouse=a]]
 
 vim.g.mapleader = " "
-	
+
 vim.wo.number = true
 
 -- dir view
@@ -83,9 +84,7 @@ lsp_zero.setup_nvim_cmp({
 	select_behavior = 'insert'
 })
 
-
--- to learn how to use mason.nvim
--- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
+ -- to learn how to use mason.nvim read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md require('mason').setup({})
 require('mason').setup({})
 
 require('mason-lspconfig').setup({
@@ -96,7 +95,6 @@ require('mason-lspconfig').setup({
     end,
   },
 })
-
 
 --completions
 local cmp = require('cmp')
