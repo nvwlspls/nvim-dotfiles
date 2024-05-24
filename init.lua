@@ -4,7 +4,7 @@
 --x 3. line numbers
 --x 4. use mouse
 --x 5. color scheme
--- 6. better syntax highliting
+--x 6. better syntax highliting (treesitter)
 -- 7. lsp
 -- 8. copilot
 -- 9. better indenting
@@ -15,14 +15,17 @@
 -- 14. code formatter
 -- 15. lint on save
 -- 16. surround text with quotes
--- 17 order text
+-- 17. order text
+-- 18. org mode(?)
+-- 19. make all quotes single quotes (part of linting)
+-- 20. split one line into multi lines
 require "paq" {
     "savq/paq-nvim", -- Let Paq manage itself
 	"nvim-lua/plenary.nvim",
 	"nvim-telescope/telescope.nvim",
     "ibhagwan/fzf-lua",	
     "rebelot/kanagawa.nvim",
-
+    {"nvim-treesitter/nvim-treesitter", build = ':TSUpdate'},
 }
 -- remaps
 vim.cmd [[set mouse=a]]
@@ -49,3 +52,9 @@ require('kanagawa').setup({
 })
 
 vim.cmd("colorscheme kanagawa")
+
+-- treesitter languages
+require('nvim-treesitter.configs').setup({
+	ensure_installed = {
+		'c', 'lua', 'typescript', 'javascript', 'python', 'go', 'sql', 'terraform', 'hcl', 'json'}
+	})
