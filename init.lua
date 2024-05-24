@@ -3,7 +3,7 @@
 --x 2. command pallet (fzf + fzf-lua) mapped to Shift+P
 --x 3. line numbers
 --x 4. use mouse
--- 5. color scheme
+--x 5. color scheme
 -- 6. better syntax highliting
 -- 7. lsp
 -- 8. copilot
@@ -14,11 +14,14 @@
 -- 13. pair parens, brackets etc
 -- 14. code formatter
 -- 15. lint on save
+-- 16. surround text with quotes
+-- 17 order text
 require "paq" {
     "savq/paq-nvim", -- Let Paq manage itself
 	"nvim-lua/plenary.nvim",
 	"nvim-telescope/telescope.nvim",
     "ibhagwan/fzf-lua",	
+    "rebelot/kanagawa.nvim",
 
 }
 -- remaps
@@ -34,5 +37,15 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+-- 'command pallet'
 local fzf = require('fzf-lua')
 vim.keymap.set('n', '<S-p>', fzf.commands,{})
+
+
+-- kanagawa color scheme
+require('kanagawa').setup({
+	--transparent = true
+	theme = "wave"
+})
+
+vim.cmd("colorscheme kanagawa")
