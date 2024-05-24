@@ -42,6 +42,7 @@ require "paq" {
 	{'junegunn/fzf.vim'},
 	'nvim-tree/nvim-web-devicons',
 	'ThePrimeagen/harpoon',
+	'prichrd/netrw.nvim',
 }
 -- remaps
 vim.cmd [[set mouse=a]]
@@ -54,7 +55,7 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+--vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
@@ -131,3 +132,21 @@ vim.keymap.set('n', '<leader>hw', function() ui.nav_file(1) end)
 vim.keymap.set('n', '<leader>he', function() ui.nav_file(2) end)
 vim.keymap.set('n', '<leader>hr', function() ui.nav_file(3) end)
 vim.keymap.set('n', '<leader>ht', function() ui.nav_file(4) end)
+
+-- fzf
+vim.keymap.set('n', '<leader>ff', function() vim.cmd('Files') end)
+vim.keymap.set('n', '<leader>fb', function() vim.cmd('Buffer') end)
+vim.keymap.set('n', '<leader>fg', function() vim.cmd('GFiles?') end)
+
+-- netrw
+require'netrw'.setup{
+  -- Put your configuration here, or leave the object empty to take the default
+  -- configuration.
+  icons = {
+    symlink = '', -- Symlink icon (directory and file)
+    directory = '', -- Directory icon
+    file = '', -- File icon
+  },
+  use_devicons = true, -- Uses nvim-web-devicons if true, otherwise use the file icon specified above
+  mappings = {}, -- Custom key mappings
+}
